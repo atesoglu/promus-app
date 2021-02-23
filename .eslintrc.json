@@ -1,0 +1,7 @@
+{
+  "extends": ["react-app", "plugin:prettier/recommended"],
+  "rules": {
+    "no-debugger": "warn",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+  }
+}
