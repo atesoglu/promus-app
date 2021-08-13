@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class Login extends React.Component {
-  render() {
-    console.log('Login.render');
+function Login() {
+  console.log('Login.render');
 
-    return <div className="container">#login</div>;
-  }
+  return <div className="container">#login</div>;
 }
+
+export default Login;

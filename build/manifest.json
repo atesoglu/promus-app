@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Promus App",
+  "name": "Promus App | Yet another developer butler",
   "icons": [
     {
       "src": "favicon.ico",
