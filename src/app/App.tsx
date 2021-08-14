@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import AppHeader from './layout/Header';
 import AppMain from './layout/Main';
@@ -9,15 +9,15 @@ import './App.less';
 
 function App() {
   return (
-    <Router>
-      <div className="app min-h-screen flex flex-col">
-        <AppHeader />
+    <div className="app min-h-screen flex flex-col antialiased text-gray-900">
+      <AppHeader />
 
+      <Router>
         <AppMain />
+      </Router>
 
-        <AppFooter />
-      </div>
-    </Router>
+      <AppFooter />
+    </div>
   );
 }
 

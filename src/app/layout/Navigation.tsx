@@ -1,24 +1,21 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-
-import { Menu } from 'antd';
-import SubMenu from 'antd/lib/menu/SubMenu';
+import { Link } from 'react-router-dom';
 
 function Navigation() {
   return (
-    <nav className="flex py-1 divide-x divide-gray-200 text-sm">
-      <div className="flex-initial px-3">
-        <Link to={'/'}>Home</Link>
-      </div>
-      <div className="flex-initial px-3">
-        <Link to={'/about'}>About</Link>
-      </div>
-      <div className="flex-initial px-3">
-        <Link to={'/contact'}>Contact</Link>
-      </div>
-      <div className="flex-initial px-3">
-        <Link to={'/login'}>Login</Link>
-      </div>
+    <nav className="flex flex-col">
+      <Link to={'/'} className="py-2">
+        Home
+      </Link>
+      <Link to={'/about'} className="py-2">
+        About
+      </Link>
+      <Link to={'/contact'} className="py-2">
+        Contact
+      </Link>
+      <Link to={'/login'} className="py-2">
+        Login
+      </Link>
     </nav>
   );
 }
