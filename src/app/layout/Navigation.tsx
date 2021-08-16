@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Navigation() {
+export default function Navigation() {
   return (
-    <nav className="flex flex-col">
+    <nav className="flex flex-col uppercase">
       <Link to={'/'} className="py-1">
         Home
       </Link>
@@ -22,8 +22,6 @@ function Navigation() {
     </nav>
   );
 }
-
-export default Navigation;
 
 /* export default class Navigation extends React.Component<INavigationProps, INavigationState> {
   state: INavigationState = {
