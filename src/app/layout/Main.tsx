@@ -7,6 +7,7 @@ import About from '../../components/About';
 import Contact from '../../components/Contact';
 import Home from '../../components/Home';
 import Login from '../../components/Login';
+import TextEditor from '../../components/TextEditor';
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
             <Route path="/contact" component={Contact} />
             <Route path="/about" component={About} />
             <Route path="/login" component={Login} />
+            <Route path="/text-editor" component={TextEditor} />
           </Switch>
         </div>
       </main>

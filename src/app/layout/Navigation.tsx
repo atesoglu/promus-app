@@ -4,17 +4,20 @@ import { Link } from 'react-router-dom';
 function Navigation() {
   return (
     <nav className="flex flex-col">
-      <Link to={'/'} className="py-2">
+      <Link to={'/'} className="py-1">
         Home
       </Link>
-      <Link to={'/about'} className="py-2">
+      <Link to={'/about'} className="py-1">
         About
       </Link>
-      <Link to={'/contact'} className="py-2">
+      <Link to={'/contact'} className="py-1">
         Contact
       </Link>
-      <Link to={'/login'} className="py-2">
+      <Link to={'/login'} className="py-1">
         Login
+      </Link>
+      <Link to={'/text-editor'} className="py-1">
+        Text Editor
       </Link>
     </nav>
   );
