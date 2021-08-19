@@ -1,18 +1,21 @@
 import React, { ChangeEvent, Fragment, useEffect, useState } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
-import { Button, Input } from 'antd';
+import { Button, Input, Radio } from 'antd';
 //import { Input } from 'antd';
 
 //const { TextArea } = Input;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEraser, faBackward, faForward, faArrowDown, faArrowUp, faDotCircle } from '@fortawesome/free-solid-svg-icons';
 //import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import { RadioChangeEvent } from 'antd/lib/radio';
 
 export default function TextEditor() {
   const [content, setContent] = useState('');
   const [marker, setMarker] = useState('');
   const [affix, setAffix] = useState('');
+  const [splitter, setSplitter] = useState('');
+  const [splitterPosition, setSplitterPosition] = useState('before');
 
   useEffect(() => {
     axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=5&format=text').then((response) => {
@@ -101,6 +104,16 @@ export default function TextEditor() {
   }
   function onLineBreaksAdd(event: React.MouseEvent) {
     setContent(content.toUpperCase());
+    const splitted = _.split(content, splitter);
+    console.log('splitted: ', splitted);
+    setContent(_.join(splitted, splitterPosition === 'before' ? '\n' + splitter : splitter + '\n'));
+  }
+
+  function onBeaconPositionChange(event: RadioChangeEvent) {
+    setSplitterPosition(event.target.value);
+  }
+  function onBeaconChange(event: ChangeEvent<HTMLInputElement>) {
+    setSplitter(event.target.value);
   }
 
   return (
@@ -185,8 +198,19 @@ export default function TextEditor() {
                 <Button type="primary" onClick={onLineBreaksRemove} className="flex-auto">
                   <FontAwesomeIcon icon={faDotCircle} className="text-white" /> Join Lines
                 </Button>
+                <div className="flex">
+                  <Radio.Group defaultValue={splitterPosition} onChange={onBeaconPositionChange} buttonStyle="solid" className="flex">
+                    <Radio.Button value="before" className="flex-auto">
+                      Before
+                    </Radio.Button>
+                    <Radio.Button value="after" className="flex-auto">
+                      After
+                    </Radio.Button>
+                  </Radio.Group>
+                  <Input placeholder="Keyword" value={splitter} onChange={onBeaconChange} className="flex-auto" />
+                </div>
                 <Button type="primary" onClick={onLineBreaksAdd} className="flex-auto">
-                  <FontAwesomeIcon icon={faDotCircle} className="text-white" /> Upper
+                  <FontAwesomeIcon icon={faDotCircle} className="text-white" /> Make Line Breaks
                 </Button>
               </div>
             </div>
