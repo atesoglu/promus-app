@@ -122,7 +122,7 @@ export default function TextEditor() {
         <div className="flex-grow bg-red-500 h-full">
           <textarea className="resize-none w-full h-full border border-gray-200 outline-none focus:border-blue-400" value={content} onChange={onContentChange}></textarea>
         </div>
-        <aside className="flex-shrink w-5/12 focus:outline-none bg-gray-100 px-2 py-1 border-r border-gray-200">
+        <aside className="flex-shrink w-4/12 focus:outline-none bg-gray-100 px-2 py-1 border-r border-gray-200">
           <div className="flex flex-col space-y-3">
             <div>
               <h3>Remove Empty Or Duplicate Lines</h3>
@@ -195,22 +195,20 @@ export default function TextEditor() {
             <div>
               <h3>Add / Remove Line Breaks</h3>
               <div className="flex space-x-1">
-                <Button type="primary" onClick={onLineBreaksRemove} className="flex-auto">
+                <Button type="primary" onClick={onLineBreaksRemove} className="flex-initial">
                   <FontAwesomeIcon icon={faDotCircle} className="text-white" /> Join Lines
                 </Button>
-                <div className="flex">
-                  <Radio.Group defaultValue={splitterPosition} onChange={onBeaconPositionChange} buttonStyle="solid" className="flex">
-                    <Radio.Button value="before" className="flex-auto">
-                      Before
-                    </Radio.Button>
-                    <Radio.Button value="after" className="flex-auto">
-                      After
-                    </Radio.Button>
-                  </Radio.Group>
-                  <Input placeholder="Keyword" value={splitter} onChange={onBeaconChange} className="flex-auto" />
-                </div>
+                <Radio.Group defaultValue={splitterPosition} onChange={onBeaconPositionChange} buttonStyle="solid" className="flex-grow">
+                  <Radio.Button value="before" className="flex-grow">
+                    <FontAwesomeIcon icon={faForward} /> Before
+                  </Radio.Button>
+                  <Radio.Button value="after" className="flex-grow">
+                    <FontAwesomeIcon icon={faForward} /> After
+                  </Radio.Button>
+                </Radio.Group>
+                <Input placeholder="Keyword" value={splitter} onChange={onBeaconChange} className="w-36 flex-shrink" />
                 <Button type="primary" onClick={onLineBreaksAdd} className="flex-auto">
-                  <FontAwesomeIcon icon={faDotCircle} className="text-white" /> Make Line Breaks
+                  <FontAwesomeIcon icon={faDotCircle} className="text-white" /> Break Lines
                 </Button>
               </div>
             </div>
