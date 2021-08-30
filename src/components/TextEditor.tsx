@@ -6,7 +6,7 @@ import { Button, Input, Radio } from 'antd';
 
 //const { TextArea } = Input;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEraser, faBackward, faForward, faArrowDown, faArrowUp, faDotCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEraser, faBackward, faForward, faArrowDown, faArrowUp, faDotCircle, faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 //import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { RadioChangeEvent } from 'antd/lib/radio';
 
@@ -17,11 +17,7 @@ export default function TextEditor() {
   const [splitter, setSplitter] = useState('');
   const [splitterPosition, setSplitterPosition] = useState('before');
 
-  useEffect(() => {
-    axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=5&format=text').then((response) => {
-      setContent(response.data);
-    });
-  }, []);
+  useEffect(() => {}, []);
 
   function onContentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setContent(event.target.value);
@@ -116,11 +112,22 @@ export default function TextEditor() {
     setSplitter(event.target.value);
   }
 
+  function onGenerateData(event: React.MouseEvent) {
+    axios.get('https://baconipsum.com/api/?type=meat-and-filler&paras=5&format=text').then((response) => {
+      setContent(response.data);
+    });
+  }
+
   return (
     <Fragment>
       <div className="flex h-full">
         <div className="flex-grow bg-red-500 h-full">
-          <textarea className="resize-none w-full h-full border border-gray-200 outline-none focus:border-blue-400" value={content} onChange={onContentChange}></textarea>
+          <textarea
+            className="resize-none w-full h-full border border-gray-200 outline-none focus:border-blue-400"
+            placeholder="Enter a value to manipulate"
+            value={content}
+            onChange={onContentChange}
+          ></textarea>
         </div>
         <aside className="flex-shrink w-4/12 focus:outline-none bg-gray-100 px-2 py-1 border-r border-gray-200">
           <div className="flex flex-col space-y-3">
@@ -212,6 +219,16 @@ export default function TextEditor() {
                 </Button>
               </div>
             </div>
+
+            <div>
+              <h3>Generate Lines</h3>
+              <div className="flex space-x-1">
+                <Button type="primary" onClick={onGenerateData} className="flex-auto">
+                  <FontAwesomeIcon icon={faWaveSquare} className="text-white" /> Generate Data
+                </Button>
+              </div>
+            </div>
+            <div className="font-bold bg-green-600 text-white p-1">Content length: {content.length}</div>
           </div>
         </aside>
       </div>
