@@ -228,7 +228,7 @@ export default function TextEditor() {
                 </Button>
               </div>
             </div>
-            <div className="font-bold bg-green-600 text-white p-1">Content length: {content.length}</div>
+            <div className="font-bold bg-gray-400 rounded text-white p-1">Content length: {content.length}</div>
           </div>
         </aside>
       </div>
